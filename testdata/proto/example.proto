@@ -1,0 +1,33 @@
+syntax="proto3";
+
+package example;
+
+enum Status {
+    UNKNOWN = 0;
+    ACTIVE = 1;
+    INACTIVE = 2;
+}
+
+message Phone {
+    string number = 1;
+}
+
+message Mobile {
+    string number = 1;
+}
+
+message User {
+    string name = 1;
+    string email = 2;
+    Phone phone = 3;
+    Status status = 4;
+    /* map<string, string> extra = 5; */
+}
+
+message UserRequest {
+    string name = 1;
+}
+
+service UserService {
+    rpc GetUser (UserRequest) returns (User);
+}
